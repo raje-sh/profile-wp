@@ -1,11 +1,11 @@
-version: '3'
+version: "3"
 services:
   nginx:
     build: ./nginx
     volumes:
       - ./website/bedrock:/var/www/html
     ports:
-      - '8080:80'
+      - "8080:80"
     depends_on:
       - php
       - mariadb
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./website/bedrock:/var/www/html
   mariadb:
-    image: mariadb
+    image: mariadb@sha256:2403cc521634162f743b5179ff5b35520daf72df5d9e7e397192af685d9148fd
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: mariadb
@@ -32,4 +32,3 @@ services:
       - 8000:8080
     depends_on:
       - mariadb
-
